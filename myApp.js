@@ -27,5 +27,15 @@ function jsonHandler(req, res) {
 app.use(middleware);
 app.get('/', handler);
 app.get('/json', jsonHandler);
+app.get(
+  '/now',
+  function (req, res, next) {
+    req.time = new Date().toString();
+    next();
+  },
+  function (req, res) {
+    res.json({ time: req.time });
+  }
+);
 
 module.exports = app;
