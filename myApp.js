@@ -8,6 +8,11 @@ function handler(req, res) {
   res.sendFile(path);
 }
 
+function jsonHandler(req, res) {
+  res.json({ message: 'Hello json' });
+}
+
 app.get('/', handler);
+app.get('/json', jsonHandler);
 
 module.exports = app;
